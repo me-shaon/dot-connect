@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import logo from '../img/logo.png';
-import Menu from './Menu';
-import PublicGameList from './PublicGameList';
+import Menu from '../components/Menu';
+import PublicGameList from '../components/PublicGameList';
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
+        const { gameStatus, gameId, availableGames } = this.props;
         return (
             <div>
                 <img src={logo} alt="DOT CONNECT" />
@@ -18,11 +14,8 @@ class Home extends Component {
                     Play your favorite childhood game online with friends
                 </p>
 
-                <Menu
-                    gameStatus={this.props.gameStatus}
-                    gameId={this.props.gameId}
-                />
-                <PublicGameList games={this.props.availableGames} />
+                <Menu gameStatus={gameStatus} gameId={gameId} />
+                <PublicGameList games={availableGames} />
             </div>
         );
     }
